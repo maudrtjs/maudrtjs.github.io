@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<!DOCTYPE html>
+<html lang="en">
+{% extends "base.html" %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/search.css' %}">
+{% block sidebar %}
+{% endblock %}
+{% block content %}
+<!-- Begin Page Content -->
+<!--<img src="..\static\search\welcome_test.JPG" class="img-fluid" alt="Responsive image">-->
+<!--<a class="btn btn-primary" href="#" role="button">Link</a>-->
+
+<div class="img-wrapper">
+    <img class="img-fluid" src="..\static\search\welcome_test.JPG">
+    <div class="img-overlay">
+      <a class="btn btn-primary" href="main" role="button">Link</a>
+    </div>
+</div>
+
+{% endblock %}
+
+</html>

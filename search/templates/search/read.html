@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends "base.html" %}
+{% block corps %}
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">{{ sheet.title }} </h1>
+        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+    </div>
+    <a class="btn btn-outline-warning" href="{% url 'edit_score' sheet.id %}" role="button">Edit this score</a>
+    <br>
+    <br>
+<h2>Composed by <a class="small" href="{% url 'scores_list_by_compositor' sheet.compositor %}"> {{ sheet.compositor }}</a></h2>
+<p class="infos">
+    {% if sheet.composition_date >= 100 %}
+    Edited in {{ sheet.composition_date|date:"DATE_FORMAT" }}, it belongs
+    to {{ sheet.style }} style
+    {% else %}
+
+    {% endif %}
+</p>
+<div class="contenu"> You can access to this score to the following url:
+    <a href={{sheet.pdf_link}}>Get this sheet</a></div>
+<div class="contenu"> You can edit this score and help us improve our data base:
+    <a href="{% url 'edit_score' sheet.id %}">Edit this score</a></div>
+    <br>
+    <p class="add_infos">
+        Number of views: {{ sheet.popularity|floatformat  }}
+    </p>
+    {% endblock %}
+</html>

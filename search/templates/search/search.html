@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends "base.html" %}
+{% block corps %}
+<!-- Content Row -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">What are you looking for?</h1>
+        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+    </div>
+    <a class="btn btn-outline-primary" href="{% url 'add_score' %}" role="button">Add a new score!</a>
+    <br>
+    <br>
+
+    <!-- Content Row -->
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Compositor</th>
+            <th scope="col">Instrumentation</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for sheet in last_sheets %}
+        <tr>
+            <div class="sheet">
+                <th scope="row"><a href="{% url 'read' sheet.id %}">{{ sheet.title }}</a></th>
+                <td>{{ sheet.compositor }}</td>
+                <td>{{ sheet.instrumentation }}</td>
+
+            </div>
+            {% empty %}
+            <p>No sheet music</p>
+            {% endfor %}
+        </tr>
+
+        </tbody>
+    </table>
+
+    {% endblock %}
+</html>
